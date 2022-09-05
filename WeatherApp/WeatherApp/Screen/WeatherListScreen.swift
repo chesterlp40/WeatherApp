@@ -51,6 +51,7 @@ struct WeatherListScreen: View {
 }
 
 struct WeatherCell: View {
+    @EnvironmentObject var store: Store
     let weather: WeatherViewModel
     
     var body: some View {
@@ -75,7 +76,9 @@ struct WeatherCell: View {
             )
                 .frame(width: 50, height: 50)
             
-            Text("\(Int(weather.temperature)) K")
+            Text(
+                "\(Int(weather.getTemperatureByUnit(unit: store.selectedUnit))) \(String(store.selectedUnit.displayText.prefix(1)))"
+            )
         }
         .padding()
         .background(

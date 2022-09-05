@@ -15,7 +15,7 @@ struct Constants {
             city: String
         ) -> URL? {
             return URL(
-                string: "https://api.openweathermap.org/data/2.5/weather?q=\(city.escaped())&appid=\(appId)"
+                string: "https://api.openweathermap.org/data/2.5/weather?q=\(city.escaped())&appid=\(Constants.appId)"
             )
         }
         

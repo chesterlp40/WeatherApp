@@ -7,21 +7,40 @@
 
 import SwiftUI
 
+enum Sheets: Identifiable {
+    
+    var id: UUID {
+        return UUID()
+    }
+    
+    case addNewCity
+    case settings
+}
+
 struct WeatherListScreen: View {
+    @State private var activeSheet: Sheets?
+    
     var body: some View {
         List {
             ForEach(1...20, id: \.self) { index in
                 Text("\(index)")
             }
-            }
+        }
         .listStyle(PlainListStyle())
-        
+        .sheet(item: $activeSheet, content: { (item) in
+            switch item {
+                case .addNewCity:
+                    AddCityScreen()
+                case .settings:
+                    ScreenSettings()
+            }
+        })
         .navigationBarItems(leading: Button(action: {
-           
+            activeSheet = .settings
         }) {
             Image(systemName: "gearshape")
         }, trailing: Button(action: {
-            
+            activeSheet = .addNewCity
         }, label: {
             Image(systemName: "plus")
         }))

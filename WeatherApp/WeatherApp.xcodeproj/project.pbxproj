@@ -25,6 +25,7 @@
 		86C5463F28C58D9200987903 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5463E28C58D9200987903 /* Constants.swift */; };
 		86C5464228C58F3500987903 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5464128C58F3500987903 /* WeatherViewModel.swift */; };
 		86C5464428C58F5100987903 /* AddWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5464328C58F5100987903 /* AddWeatherViewModel.swift */; };
+		86C5464728C5954800987903 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5464628C5954800987903 /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		86C5463E28C58D9200987903 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		86C5464128C58F3500987903 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		86C5464328C58F5100987903 /* AddWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeatherViewModel.swift; sourceTree = "<group>"; };
+		86C5464628C5954800987903 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		86C5461228C583F600987903 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				86C5464528C5952900987903 /* GlobalState */,
 				86C5464028C58F1600987903 /* ViewModel */,
 				86C5463D28C58D8100987903 /* Util */,
 				86C5463A28C58D1000987903 /* Service */,
@@ -173,6 +176,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		86C5464528C5952900987903 /* GlobalState */ = {
+			isa = PBXGroup;
+			children = (
+				86C5464628C5954800987903 /* Store.swift */,
+			);
+			path = GlobalState;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,6 +264,7 @@
 				86C5461628C583F600987903 /* ContentView.swift in Sources */,
 				86C5461428C583F600987903 /* WeatherAppApp.swift in Sources */,
 				86C5464428C58F5100987903 /* AddWeatherViewModel.swift in Sources */,
+				86C5464728C5954800987903 /* Store.swift in Sources */,
 				86C5462B28C588E600987903 /* UserDefaults+Extension.swift in Sources */,
 				86C5464228C58F3500987903 /* WeatherViewModel.swift in Sources */,
 				86C5462D28C5893700987903 /* View+Extension.swift in Sources */,

@@ -8,6 +8,7 @@
 import Foundation
 
 struct WeatherViewModel {
+    let id = UUID()
     let weather: Weather
     
     var temperature: Double {

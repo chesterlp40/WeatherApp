@@ -18,19 +18,20 @@ enum Sheets: Identifiable {
 }
 
 struct WeatherListScreen: View {
+    @EnvironmentObject var store: Store
     @State private var activeSheet: Sheets?
     
     var body: some View {
         List {
-            ForEach(1...20, id: \.self) { index in
-                Text("\(index)")
+            ForEach(store.weatherList, id: \.id) { weather in
+                WeatherCell(weather: weather)
             }
         }
         .listStyle(PlainListStyle())
         .sheet(item: $activeSheet, content: { (item) in
             switch item {
                 case .addNewCity:
-                    AddCityScreen()
+                    AddCityScreen().environmentObject(store)
                 case .settings:
                     ScreenSettings()
             }
@@ -50,23 +51,31 @@ struct WeatherListScreen: View {
 }
 
 struct WeatherCell: View {
+    let weather: WeatherViewModel
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 15) {
-                Text("Houston")
+                Text(self.weather.city)
                     .fontWeight(.bold)
                 HStack {
                     Image(systemName: "sunrise")
-                    Text("\(Date().formatAsString())")
+                    Text("\(self.weather.sunrise.formatAsString())")
                 }
                 HStack {
                     Image(systemName: "sunset")
-                    Text("\(Date().formatAsString())")
+                    Text("\(self.weather.sunset.formatAsString())")
                 }
             }
             Spacer()
+            URLImage(
+                url: Constants.Urls.weatherUrlAsStringByIcon(
+                    icon: weather.icon
+                )
+            )
+                .frame(width: 50, height: 50)
             
-            Text("72 F")
+            Text("\(Int(weather.temperature)) K")
         }
         .padding()
         .background(
@@ -90,6 +99,6 @@ struct WeatherCell: View {
 
 struct WeatherListScreen_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherListScreen()
+        WeatherListScreen().environmentObject(Store())
     }
 }
